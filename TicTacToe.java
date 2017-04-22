@@ -7,6 +7,7 @@ public class TicTacToe {
   private boolean game = false;
   private boolean aiWin = false;
   private boolean playerWin = false;
+  private boolean aiMove = false;
  
   public TicTacToe(){ // when called it starts a new game
     game = true;
@@ -65,33 +66,26 @@ public class TicTacToe {
    public boolean AIvCheck() {  // checks the board Vertically(row)
 	  for(int c = 0; c < board[0].length; c++) {
 		  if((board[0][c].equals("X") || board[2][c].equals("X")) && board[1][c].equals("X")) {
-			  aiWin = true;
+			  aiMove = true;
 			  return true;
-		  }
-		  else if((board[0][c].equals("O") || board[2][c].equals("O")) && board[1][c].equals("O")) {
-			  playerWin = true; 
-			  return true;
-		  }		  
+		  }	  
 	  }
- 
 	  return false;
 }
   public boolean AIhCheck(){ // checks the board Horizontally(column)
-    
 	  for(int r = 0; r < board.length; r++)
 	  {
 		  if((board[r][0].equals("X") || board[r][2].equals("X")) && board[r][1].equals("X")) {
-			  aiWin = true;
+			  aiMove = true;
 			  return true;
 		  }
-		  else if((board[r][0].equals("O") || board[r][2].equals("O"))&& board[r][1].equals("O")) {
-			  playerWin = true; 
-			  return true;
-		  }		  
 	  }
  
 	  return false;
   }  
+  public boolean dCheck() {     
+  
+  }
 public void AiMove(){ //AI will pick from 3 random points and choose where to go
     int[] p1 = {0,0};
     int[] p2 = {0,0};
