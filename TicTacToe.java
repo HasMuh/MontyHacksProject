@@ -126,7 +126,7 @@ public class TicTacToe {
   public void AIdCheck() {     
   		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
 			aiMove = true;
-			if(board[0][0].equals("X"))
+			if(board[0][0].equals("X")) //Left-Right Win
 			{
 				board[2][2] = "X";
 			}
@@ -137,7 +137,7 @@ public class TicTacToe {
 		} 
   		else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
 			aiMove = true;
-			if(board[0][2].equals("X"))
+			if(board[0][2].equals("X")) //Right-Left Win
 			{
 				board[2][0] = "X";
 			}
@@ -148,7 +148,7 @@ public class TicTacToe {
 		}
   		else if((board[0][0].equals("O") || board[2][2].equals("O")) && board[1][1].equals("O")) {
 			aiMove = true;
-			if(board[0][0].equals("O"))
+			if(board[0][0].equals("O")) //Left Right Block
 			{
 				board[2][2] = "X";
 			}
@@ -159,7 +159,7 @@ public class TicTacToe {
 		} 
   		else if((board[0][2].equals("O") || board[2][0].equals("O")) && board[1][1].equals("O")) {
 			aiWin = true;
-			if(board[0][2].equals("O"))
+			if(board[0][2].equals("O")) //Right-Left Block
 			{
 				board[2][0] = "X";
 			}
