@@ -59,10 +59,10 @@ public class TicTacToe {
 	  return false;
   }
   public boolean dCheck() {  
-	  	if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
+	  	if((board[0][0].equals("X") && board[2][2].equals("X")) && board[1][1].equals("X")) {
 			aiWin = true;
 			return true;	
-		} else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
+		} else if((board[0][2].equals("X") && board[2][0].equals("X")) && board[1][1].equals("X")) {
 			aiWin = true;
 			return true;	
 		}
@@ -125,10 +125,10 @@ public class TicTacToe {
   } 
   public boolean AIdCheck() {     
   		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
-			aiWin = true;
+			aiMove = true;
 			return true;	
 		} else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
-			aiWin = true;
+			aiMove = true;
 			return true;	
 		}
   }
