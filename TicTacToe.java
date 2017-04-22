@@ -2,11 +2,10 @@ import java.util.*;
 
 public class TicTacToe {
 	public static void main(String[] args) {
-  int r = 0, c = 0;
+  int rows = 0, columns = 0;
 		boolean a = false;
   TicTacToe b = new TicTacToe();
   Scanner in = new Scanner(System.in);
-  
   System.out.println("Tic Tac Toe:");
   while(!a){
 	b.print();
@@ -16,18 +15,35 @@ public class TicTacToe {
 		int c = in.nextInt() - 1;
 		b.mark(r,c);
 		b.AIvCheck();
+		if(b.getaiMove()== false){
 		b.AIhCheck();
+		}
+		if(b.getaiMove()== false){
 		b.AIdCheck();
+		}
 		if(b.getaiMove()== false){
 		b.AiMove();	
 		}
 		b.vCheck();
 		b.hCheck();
 		b.dCheck();
-		if(b.getaiWin() || b.getplayerWin()){
+		if(b.getaiWin() || b.getPlayerWin() || b.countEmpt() == 0){
 		a = true;	
 		}
 	}
+  b.print();
+  if(b.getaiWin())
+  {
+	  System.out.println("The computer wins");
+  }
+  else if(b.getPlayerWin())
+  {
+	  System.out.println("You win!");
+  }
+  else
+  {
+	  System.out.println("It's a tie!");
+  }
 	}
   // Variables ----------------------------------------------------------------
    private int rows, cols;
@@ -55,20 +71,26 @@ public class TicTacToe {
     playerWin = false;
     aiMove = false;
     in = new Scanner(System.in);
+    p1 = new int[2];
+    p2 = new int[2];
+    p3 = new int[2];
   }  
   public int countEmpt(){ // counts the empty spaces left on the board
     int spaces = 0;
     for(int x = 0; x < board.length; x++){ //rows
-        for(int y = 0; y < board[0].length; y ++){ //collums
+        for(int y = 0; y < board[0].length; y ++){ //columns
           if(board[x][y].equals(" ")){
            spaces ++; 
           }
-    }}
-	  return spaces;
-   public int[][] getBoard(){
+    }
+    }
+        return spaces;
+    
+   }
+   public String[][] getBoard(){
 	return board;
    }
-   public boolean getAIWin(){
+   public boolean getaiWin(){
 	   return aiWin;
    }	
    public boolean getPlayerWin(){
@@ -122,31 +144,34 @@ public class TicTacToe {
 			aiWin = true;
 			return true;	
 		}
+	  	return false;
   }
   //AI ------------------------------------------------------------------------
 
     public void AIvCheck() {  // Makes a winning move if possible or blocks player if necessary
 	  for(int c = 0; c < board[0].length; c++) {
 		  if((board[0][c].equals("X") || board[2][c].equals("X")) && board[1][c].equals("X")) {
-			  aiMove = true;
-			  if(board[0][c].equals("X")) //Winning Play
+			  if(board[0][c].equals("X") && !board[2][0].equals("O")) //Winning Play
 			  {
 				  board[2][c] = "X";
+				  aiMove = true;
 			  }
-			  else
+			  else if(board[2][c].equals("X") && !board[2][0].equals("O"))
 			  {
 				  board[0][c] = "X";
+				  aiMove = true;
 			  }
 		  }
 		  if((board[0][c].equals("O") || board[2][c].equals("O")) && board[1][c].equals("O")) {
-			  aiMove = true;
-			  if(board[0][c].equals("O")) //Block
+			  if(board[0][c].equals("O") && !board[2][0].equals("O")) //Block
 			  {
 				  board[2][c] = "X";
+				  aiMove = true;
 			  }
-			  else
+			  else if(board[2][c].equals("O") && !board[2][0].equals("O"))
 			  {
 				  board[0][c] = "X";
+				  aiMove = true;
 			  }
 		  }
 	  }
@@ -156,72 +181,79 @@ public class TicTacToe {
 	  for(int r = 0; r < board.length; r++)
 	  {
 		  if((board[r][0].equals("X") || board[r][2].equals("X")) && board[r][1].equals("X")) {
-			  aiMove = true;
-			  if(board[r][0].equals("X"))
+			  if(board[r][0].equals("X") && !board[2][0].equals("O"))
 			  {
 				  board[r][2] = "X";
+				  aiMove = true;
 			  }
-			  else
+			  else if(board[r][2].equals("X") && !board[2][0].equals("O"))
 			  {
 				  board[r][0] = "X";
+				  aiMove = true;
 			  }
 		  }
 		  if((board[r][0].equals("O") || board[r][2].equals("O")) && board[r][1].equals("O")) {
-			  aiMove = true;
-			  if(board[r][0].equals("O"))
+			  if(board[r][0].equals("O") && !board[2][0].equals("O"))
 			  {
 				  board[r][2] = "X";
+				  aiMove = true;
 			  }
-			  else
+			  else if(board[r][2].equals("O") && !board[2][0].equals("O"))
 			  {
 				  board[r][0] = "X";
+				  aiMove = true;
 			  }
 		  }
 	  }
   } 
   public void AIdCheck() {     
-  		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
-			aiMove = true;
-			if(board[0][0].equals("X")) //Left-Right Win
+  		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {			
+			if(board[0][0].equals("X") && !board[2][2].equals("O")) //Left-Right Win
 			{
 				board[2][2] = "X";
+				aiMove = true;
 			}
-			else
+			else if(board[2][2].equals("X") && !board[0][0].equals("O"));
 			{
 				board[0][0] = "X";
+				aiMove = true;
 			}
 		} 
   		else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
-			aiMove = true;
-			if(board[0][2].equals("X")) //Right-Left Win
+			if(board[0][2].equals("X") && !board[2][0].equals("O")) //Right-Left Win
 			{
 				board[2][0] = "X";
+				aiMove = true;
 			}
-			else
+			else if(board[2][0].equals("X") && !board[0][2].equals("O"))
 			{
 				board[0][2] = "X";
+				aiMove = true;
 			}	
 		}
   		else if((board[0][0].equals("O") || board[2][2].equals("O")) && board[1][1].equals("O")) {
 			aiMove = true;
-			if(board[0][0].equals("O")) //Left Right Block
+			if(board[0][0].equals("O") && !board[2][0].equals("O")) //Left Right Block
 			{
 				board[2][2] = "X";
+				aiMove = true;
 			}
-			else
+			else if(board[2][2].equals("O") && !board[2][0].equals("O"))
 			{
 				board[0][0] = "X";
+				aiMove = true;
 			}
 		} 
   		else if((board[0][2].equals("O") || board[2][0].equals("O")) && board[1][1].equals("O")) {
-			aiWin = true;
-			if(board[0][2].equals("O")) //Right-Left Block
+			if(board[0][2].equals("O") && !board[2][0].equals("O")) //Right-Left Block
 			{
 				board[2][0] = "X";
+				aiMove = true;
 			}
-			else
+			else if(board[2][0].equals("O") && !board[2][0].equals("O"))
 			{
 				board[0][2] = "X";
+				aiMove = true;
 			}	
 		}
   }
@@ -284,9 +316,9 @@ public void AiMove(){ //AI will pick from 3 random points and choose where to go
    {
 	   System.out.println("Illegal Move, try again");
 	   System.out.print("Enter row: ");
-	   int rNew = in.nextInt();
+	   int rNew = in.nextInt() - 1;
 	   System.out.print("Enter column: ");
-	   int cNew = in.nextInt();
+	   int cNew = in.nextInt() - 1;
 	   legal = false;
 	   mark(rNew,cNew);
 	   
@@ -295,8 +327,9 @@ public void AiMove(){ //AI will pick from 3 random points and choose where to go
    {
    board[r][c] = "O";
    }
-  }
-}
+   }
+  
+
 
 public void print()
   {
@@ -313,3 +346,4 @@ public void print()
 		  System.out.println();
 	  }
   }
+}
