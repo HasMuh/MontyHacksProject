@@ -69,11 +69,11 @@ public class TicTacToe {
   }
   //AI ------------------------------------------------------------------------
 
-   public boolean AIvCheck() {  // Makes a winning move if possible or blocks player if necessary
+    public void AIvCheck() {  // Makes a winning move if possible or blocks player if necessary
 	  for(int c = 0; c < board[0].length; c++) {
 		  if((board[0][c].equals("X") || board[2][c].equals("X")) && board[1][c].equals("X")) {
 			  aiMove = true;
-			  if(board[0][c].equals("X"))
+			  if(board[0][c].equals("X")) //Winning Play
 			  {
 				  board[2][c] = "X";
 			  }
@@ -81,20 +81,48 @@ public class TicTacToe {
 			  {
 				  board[0][c] = "X";
 			  }
-		  }	  
+		  }
+		  if((board[0][c].equals("O") || board[2][c].equals("O")) && board[1][c].equals("O")) {
+			  aiMove = true;
+			  if(board[0][c].equals("O")) //Block
+			  {
+				  board[2][c] = "X";
+			  }
+			  else
+			  {
+				  board[0][c] = "X";
+			  }
+		  }
 	  }
-	  return false;
-  public boolean AIhCheck(){ // checks the board Horizontally(column)
+}
+ 
+    public void AIhCheck(){ //Win/block function
 	  for(int r = 0; r < board.length; r++)
 	  {
 		  if((board[r][0].equals("X") || board[r][2].equals("X")) && board[r][1].equals("X")) {
 			  aiMove = true;
-			  return true;
+			  if(board[r][0].equals("X"))
+			  {
+				  board[r][2] = "X";
+			  }
+			  else
+			  {
+				  board[r][0] = "X";
+			  }
+		  }
+		  if((board[r][0].equals("O") || board[r][2].equals("O")) && board[r][1].equals("O")) {
+			  aiMove = true;
+			  if(board[r][0].equals("O"))
+			  {
+				  board[r][2] = "X";
+			  }
+			  else
+			  {
+				  board[r][0] = "X";
+			  }
 		  }
 	  }
- 
-	  return false;
-  }  
+  } 
   public boolean AIdCheck() {     
   		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
 			aiWin = true;
