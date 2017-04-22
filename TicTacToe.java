@@ -1,19 +1,35 @@
 import java.util.*;
 
 public class TicTacToe {
+	public static void main(String[] args) {
+  int r = 0, c = 0;
+	int[][] emptB = {
+		{"","",""},
+		{"","",""},
+		{"","",""}
+	};
+  TicTacToe b = new TicTacToe(emptB);
+  Scanner in = new Scanner(System.in);
+  
+  System.out.println("Tic Tac Toe:");
+	  for(int r = 0; r < b.length; r++){
+			for(int c = 0; c < b.length; c++){
+				
+		}}
+  }
   // Variables ----------------------------------------------------------------
-  private int rows, cols;
-  private String[][] board = new String[rows][cols];
-  private boolean game = false;
-  private boolean aiWin = false;
-  private boolean playerWin = false;
-  private boolean aiMove = false;
-  private int[] p1 = {0,0};
-  private int[] p2 = {0,0};
-  private int[] p3 = {0,0};
+  private String[][] board;
+  private boolean game;
+  private boolean aiWin;
+  private boolean playerWin;
+  private boolean aiMove;
+  private int[] p1;
+  private int[] p2;
+  private int[] p3;
  
-  public TicTacToe(){ // when called it starts a new game
+  public TicTacToe(int[][] b){ // when called it starts a new game
     game = true;
+	  board = b;
   }  
   public int countEmpt(){ // counts the empty spaces left on the board
     int spaces = 0;
@@ -176,49 +192,19 @@ public class TicTacToe {
 public void AiMove(){ //AI will pick from 3 random points and choose where to go
 	Random n = new Random();
 	int choice = n.nextInt(3); // picks one of the random points to be used by ai
-	int count = 0;
-	for(int r = 0; r < board.length; r++)
-	{
-		for(int c = 0; c < board[0].length; c++)
-		{
-			if(!(board[r][c].equals("X") || board[r][c].equals("O")))
-			{
-				if(count == 0)
-				{
-					p1[0] = r;
-					p1[1] = c;
-					count++;
-				}
-				if(count == 1)
-				{
-					p2[0] = r;
-					p2[1] = c;
-					count++;
-				}
-				if(count == 2)
-				{
-					p3[0] = r;
-					p3[1] = c;
-					count++;
-				}
-			}
-		}
-	}
 	int[][] points = {
-			 {p1[0],p1[1]},
-			 {p2[0],p2[1]},
-			 {p3[0],p3[1]}
+			 {p1},
+			 {p2},
+			 {p3}
 	};
 	
-   if(this.countEmpt() >= 3) {
-	   board[points[choice][0]][points[choice][1]] = "X";
-      } 
-   else if(this.countEmpt() >= 2) { 
+   if(board.spaces >= 3) {
+  	board[points[choice]] = "X";
+      } e/lse if(board.spaces >= 2) { 
 	   choice = n.nextInt(2);
-	   board[points[choice][0]][points[choice][1]] = "X";
-   	 } 
-   else if(this.countEmpt() >= 1){
-	   board[points[0][0]][points[0][1]] = "X";
+	   board[points[choice]] = "X";
+   	 } else if(board.spaces >= 1){
+	   board[points[1]] = "X";
       }// end of the 3 random point if statement
   }
   //Player methods ------------------------------------------------------------
@@ -228,12 +214,5 @@ public void AiMove(){ //AI will pick from 3 random points and choose where to go
   }
    public void mark(int r, int c){ //Marks a certain spot. PLAYERS ARE Os
    board[r][c] = "O";
-  }
-  
-  public static void main(String[] args) {
-  int x;
-  Scanner in = new Scanner(System.in);
-    
-    
   }
 }
