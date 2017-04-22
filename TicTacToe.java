@@ -9,9 +9,9 @@ public class TicTacToe {
   System.out.println("Tic Tac Toe:");
   while(!a){
 	b.print();
-		System.out.print("Enter a row: ");
+		System.out.print("Enter a row (rows go from 1-3): ");
 		int r = in.nextInt() - 1;
-		System.out.print("Enter a column: ");
+		System.out.print("Enter a column (columns go from 1-3): ");
 		int c = in.nextInt() - 1;
 		b.mark(r,c);
 		b.AIvCheck();
@@ -30,6 +30,7 @@ public class TicTacToe {
 		if(b.getaiWin() || b.getPlayerWin() || b.countEmpt() == 0){
 		a = true;	
 		}
+		b.sendMessage();
 	}
   b.print();
   if(b.getaiWin())
@@ -39,6 +40,7 @@ public class TicTacToe {
   else if(b.getPlayerWin())
   {
 	  System.out.println("You win!");
+	  System.out.println("YOU CHEATER, YOU USED A HACK TO WIN!");
   }
   else
   {
@@ -46,7 +48,7 @@ public class TicTacToe {
   }
 	}
   // Variables ----------------------------------------------------------------
-   private int rows, cols;
+  private int rows, cols;
   private String[][] board;
   private boolean game;
   private boolean aiWin;
@@ -56,6 +58,7 @@ public class TicTacToe {
   private int[] p2;
   private int[] p3;
   private Scanner in;
+  private int messageNum;
  
   public TicTacToe(){ // when called it starts a new game
     game = true;   
@@ -141,6 +144,13 @@ public class TicTacToe {
 			aiWin = true;
 			return true;	
 		} else if((board[0][2].equals("X") && board[2][0].equals("X")) && board[1][1].equals("X")) {
+			aiWin = true;
+			return true;	
+		}
+	  	if((board[0][0].equals("O") && board[2][2].equals("O")) && board[1][1].equals("O")) {
+			aiWin = true;
+			return true;	
+		} else if((board[0][2].equals("O") && board[2][0].equals("O")) && board[1][1].equals("O")) {
 			aiWin = true;
 			return true;	
 		}
@@ -346,4 +356,37 @@ public void print()
 		  System.out.println();
 	  }
   }
+public void sendMessage()
+{
+	if(messageNum == 0)
+	{
+		System.out.println("Bot: Is this your first time or something?");
+		messageNum++;
+	}
+	else if(messageNum == 1)
+	{
+		System.out.println("Bot: I am unbeatable");
+		messageNum++;
+	}
+	else if(messageNum == 2)
+	{
+		System.out.println("Bot: Is that all?");
+		messageNum++;
+	}
+	else if(messageNum == 3)
+	{
+		System.out.println("Bot: Stop boring me");
+		messageNum++;
+	}
+	else if(messageNum == 4)
+	{
+		System.out.println("Bot: Booooo!");
+		messageNum++;
+	}
+	else if(messageNum == 5)
+	{
+		System.out.println("Bot: Now restarting conversation.exe");
+		messageNum++;
+	}
+}
 }
