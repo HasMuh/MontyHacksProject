@@ -63,15 +63,21 @@ public class TicTacToe {
   }
   //AI ------------------------------------------------------------------------
 
-   public boolean AIvCheck() {  // checks the board Vertically(row)
+   public boolean AIvCheck() {  // Makes a winning move if possible or blocks player if necessary
 	  for(int c = 0; c < board[0].length; c++) {
 		  if((board[0][c].equals("X") || board[2][c].equals("X")) && board[1][c].equals("X")) {
 			  aiMove = true;
-			  return true;
+			  if(board[0][c].equals("X"))
+			  {
+				  board[2][c] = "X";
+			  }
+			  else
+			  {
+				  board[0][c] = "X";
+			  }
 		  }	  
 	  }
 	  return false;
-}
   public boolean AIhCheck(){ // checks the board Horizontally(column)
 	  for(int r = 0; r < board.length; r++)
 	  {
