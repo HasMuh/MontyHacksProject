@@ -176,19 +176,49 @@ public class TicTacToe {
 public void AiMove(){ //AI will pick from 3 random points and choose where to go
 	Random n = new Random();
 	int choice = n.nextInt(3); // picks one of the random points to be used by ai
+	int count = 0;
+	for(int r = 0; r < board.length; r++)
+	{
+		for(int c = 0; c < board[0].length; c++)
+		{
+			if(!(board[r][c].equals("X") || board[r][c].equals("O")))
+			{
+				if(count == 0)
+				{
+					p1[0] = r;
+					p1[1] = c;
+					count++;
+				}
+				if(count == 1)
+				{
+					p2[0] = r;
+					p2[1] = c;
+					count++;
+				}
+				if(count == 2)
+				{
+					p3[0] = r;
+					p3[1] = c;
+					count++;
+				}
+			}
+		}
+	}
 	int[][] points = {
-			 {p1},
-			 {p2},
-			 {p3}
+			 {p1[0],p1[1]},
+			 {p2[0],p2[1]},
+			 {p3[0],p3[1]}
 	};
 	
-   if(board.spaces >= 3) {
-  	board[points[choice]] = "X";
-      } e/lse if(board.spaces >= 2) { 
+   if(this.countEmpt() >= 3) {
+	   board[points[choice][0]][points[choice][1]] = "X";
+      } 
+   else if(this.countEmpt() >= 2) { 
 	   choice = n.nextInt(2);
-	   board[points[choice]] = "X";
-   	 } else if(board.spaces >= 1){
-	   board[points[1]] = "X";
+	   board[points[choice][0]][points[choice][1]] = "X";
+   	 } 
+   else if(this.countEmpt() >= 1){
+	   board[points[0][0]][points[0][1]] = "X";
       }// end of the 3 random point if statement
   }
   //Player methods ------------------------------------------------------------
