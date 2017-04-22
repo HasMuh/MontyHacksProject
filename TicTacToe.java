@@ -5,6 +5,8 @@ public class TicTacToe {
   private int rows, cols;
   private String[][] board = new String[rows][cols];
   private boolean game = false;
+  private boolean aiWin = false;
+  private boolean playerWin = false;
  
   public TicTacToe(){ // when called it starts a new game
     game = true;
@@ -55,8 +57,29 @@ public class TicTacToe {
  
 	  return false;
   }
-  public void sidewayCheck() {     
-  
+  public boolean dCheck()
+  {
+	  if(board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X"))
+	  {
+		  aiWin = true;
+		  return true;
+	  }
+	  else if(board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O"))
+	  {
+		  playerWin = true;
+		  return true;
+	  }
+	  else if(board[0][2].equals("X") && board[1][1].equals("X") && board[2][0].equals("X"))
+	  {
+		  aiWin = true;
+		  return true;
+	  }
+	  else if(board[0][2].equals("O") && board[1][1].equals("O") && board[2][0].equals("O"))
+	  {
+		  playerWin = true;
+		  return true;
+	  }
+	  return false;
   }
   //AI ------------------------------------------------------------------------
 
