@@ -5,14 +5,42 @@ public class TicTacToe {
   private int rows, cols;
   private String[][] board = new String[rows][cols];
   private boolean game = false;
-  private Scanner in = new Scanner(System.in);
  
   public TicTacToe(){ // when called it starts a new game
     game = true;
   }  
+  public int countEmpt(){ // counts the empty spaces left on the board
+    int spaces = 0;
+    for(int x = 0; x < board.length; x++){ //rows
+        for(int y = 0; y < board[0].length; y ++){ //collums
+          if(board[x][y].equals("")){
+           spaces ++; 
+          }
+    }}
+  }
+  public void vCheck(){ // checks the board vertically for a win
+
+  }
+  public void hCheck(){ // checks the board Horizontally for a win
+    
+  }
+  public void sidewayCheck() {     
+  }
   //AI ------------------------------------------------------------------------
-  public void AiMove(){
-   //if() 
+  public void AiMove(){ //AI will pick from 3 random points and choose where to go
+    int[] p1 = {0,0};
+    int[] p2 = {0,0};
+    int[] p3 = {0,0};
+  for(int i = 0; i < board.length; i++) {
+    for(int j = 0; j < board[].length; j++) {
+    if
+    }} 
+   if() {
+  } else if() 
+    } else if(){
+      for(int x = 0; x < board.length; x++){ //rows
+        for(int y = 0; y < board[0].length; y ++){ //collums
+    }}}// end of the 3 random point if statement
   }
   //Player methods ------------------------------------------------------------
   public void setBoard(int r, int c){ //Sets the size of the board
@@ -20,19 +48,13 @@ public class TicTacToe {
    cols = c;
   }
    public void mark(int r, int c){ //Marks a certain spot. PLAYERS ARE Os
-	   if(board[r][c].equals("X") || board[r][c].equals("O"))
-	   {
-		   System.out.println("Illegal Move, try again");
-		   System.out.print("Enter row: ");
-		   int rNew = in.nextInt();
-		   System.out.print("Enter column: ");
-		   int cNew = in.nextInt();
-		   mark(rNew,cNew);
-	   }
-	   board[r][c] = "O";   
+   board[r][c] = "O";
   }
   
   public static void main(String[] args) {
-  int x;    
+  int x;
+  Scanner in = new Scanner(System.in);
+    
+    
   }
 }
