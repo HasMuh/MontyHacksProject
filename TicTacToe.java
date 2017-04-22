@@ -58,8 +58,14 @@ public class TicTacToe {
  
 	  return false;
   }
-  public boolean dCheck() {     
-  
+  public boolean dCheck() {  
+	  	if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
+			aiWin = true;
+			return true;	
+		} else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
+			aiWin = true;
+			return true;	
+		}
   }
   //AI ------------------------------------------------------------------------
 
@@ -83,8 +89,14 @@ public class TicTacToe {
  
 	  return false;
   }  
-  public boolean dCheck() {     
-  
+  public boolean AIdCheck() {     
+  		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
+			aiWin = true;
+			return true;	
+		} else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
+			aiWin = true;
+			return true;	
+		}
   }
 public void AiMove(){ //AI will pick from 3 random points and choose where to go
     int[] p1 = {0,0};
