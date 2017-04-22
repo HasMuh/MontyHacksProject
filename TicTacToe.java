@@ -123,13 +123,50 @@ public class TicTacToe {
 		  }
 	  }
   } 
-  public boolean AIdCheck() {     
+  public void AIdCheck() {     
   		if((board[0][0].equals("X") || board[2][2].equals("X")) && board[1][1].equals("X")) {
 			aiMove = true;
-			return true;	
-		} else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
+			if(board[0][0].equals("X"))
+			{
+				board[2][2] = "X";
+			}
+			else
+			{
+				board[0][0] = "X";
+			}
+		} 
+  		else if((board[0][2].equals("X") || board[2][0].equals("X")) && board[1][1].equals("X")) {
 			aiMove = true;
-			return true;	
+			if(board[0][2].equals("X"))
+			{
+				board[2][0] = "X";
+			}
+			else
+			{
+				board[0][2] = "X";
+			}	
+		}
+  		else if((board[0][0].equals("O") || board[2][2].equals("O")) && board[1][1].equals("O")) {
+			aiMove = true;
+			if(board[0][0].equals("O"))
+			{
+				board[2][2] = "X";
+			}
+			else
+			{
+				board[0][0] = "X";
+			}
+		} 
+  		else if((board[0][2].equals("O") || board[2][0].equals("O")) && board[1][1].equals("O")) {
+			aiWin = true;
+			if(board[0][2].equals("O"))
+			{
+				board[2][0] = "X";
+			}
+			else
+			{
+				board[0][2] = "X";
+			}	
 		}
   }
 public void AiMove(){ //AI will pick from 3 random points and choose where to go
