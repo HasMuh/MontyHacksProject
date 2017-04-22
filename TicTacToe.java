@@ -3,24 +3,35 @@ import java.util.*;
 public class TicTacToe {
 	public static void main(String[] args) {
   int r = 0, c = 0;
-	int[][] emptB = {
-		{"","",""},
-		{"","",""},
-		{"","",""}
-	};
-  TicTacToe b = new TicTacToe(emptB);
+		boolean a = false;
+  TicTacToe b = new TicTacToe();
   Scanner in = new Scanner(System.in);
   
   System.out.println("Tic Tac Toe:");
-	  for(int r = 0; r < b.length; r++){
-			for(int c = 0; c < b.length; c++){
-				
-		}}
-  }
+  while(!a){
+	b.print();
+		System.out.print("Enter a row: ");
+		int r = in.nextInt() - 1;
+		System.out.print("Enter a column: ");
+		int c = in.nextInt() - 1;
+		b.mark(r,c);
+		b.AIvCheck();
+		b.AIhCheck();
+		b.AIdCheck();
+		if(b.getaiMove()== false){
+		b.AiMove();	
+		}
+		b.vCheck();
+		b.hCheck();
+		b.dCheck();
+		if(b.getaiWin() || b.getplayerWin()){
+		a = true;	
+		}
+	}
+	}
   // Variables ----------------------------------------------------------------
   private int rows, cols;
   private String[][] board;
-  private boolean game;
   private boolean aiWin = false;
   private boolean playerWin = false;
   private boolean aiMove = false;
@@ -29,7 +40,6 @@ public class TicTacToe {
   private int[] p3;
  
   public TicTacToe(){ // when called it starts a new game
-    game = true;   
     board = new String[3][3];
     for(int r = 0; r < board.length; r++)
     {
@@ -52,6 +62,18 @@ public class TicTacToe {
     }}
 	  return spaces;
   }
+   public int[][] getBoard(){
+	return board;
+   }
+   public boolean getAIWin(){
+	   return aiWin;
+   }	
+   public boolean getPlayerWin(){
+	   return playerWin;
+   }
+	public boolean getaiMove(){
+	return aiMove;
+	}
    public boolean vCheck() {  // checks the board Vertically(row) for a win
 	  for(int c = 0; c < board[0].length; c++)
 	  {
@@ -217,6 +239,7 @@ public void AiMove(){ //AI will pick from 3 random points and choose where to go
    	 } else if(board.spaces >= 1){
 	   board[points[1]] = "X";
       }// end of the 3 random point if statement
+	aiMove = false;
   }
   //Player methods ------------------------------------------------------------
   public void setBoard(int r, int c){ //Sets the size of the board
