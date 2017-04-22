@@ -18,18 +18,29 @@ public class TicTacToe {
 		}}
   }
   // Variables ----------------------------------------------------------------
+  private int rows, cols;
   private String[][] board;
   private boolean game;
-  private boolean aiWin;
-  private boolean playerWin;
-  private boolean aiMove;
+  private boolean aiWin = false;
+  private boolean playerWin = false;
+  private boolean aiMove = false;
   private int[] p1;
   private int[] p2;
   private int[] p3;
  
-  public TicTacToe(int[][] b){ // when called it starts a new game
-    game = true;
-	  board = b;
+  public TicTacToe(){ // when called it starts a new game
+    game = true;   
+    board = new String[3][3];
+    for(int r = 0; r < board.length; r++)
+    {
+    	for(int c = 0; c < board.length; c++)
+    	{
+    		board[r][c] = " ";
+    	}
+    }
+    aiWin = false;
+    playerWin = false;
+    aiMove = false;
   }  
   public int countEmpt(){ // counts the empty spaces left on the board
     int spaces = 0;
@@ -216,3 +227,19 @@ public void AiMove(){ //AI will pick from 3 random points and choose where to go
    board[r][c] = "O";
   }
 }
+
+public void print()
+  {
+	  for(int r = 0; r < board.length; r++)
+	  {
+		  for(int c = 0; c < board[0].length; c++)
+		  {
+			  System.out.print(board[r][c]);
+			  if(c != board[0].length - 1)
+			  {
+				  System.out.print(" |");
+			  }
+		  }
+		  System.out.println();
+	  }
+  }
