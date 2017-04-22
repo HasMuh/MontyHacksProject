@@ -5,8 +5,6 @@ public class TicTacToe {
   private int rows, cols;
   private String[][] board = new String[rows][cols];
   private boolean game = false;
-  private boolean aiWin = false;
-  private boolean playerWin = false;
  
   public TicTacToe(){ // when called it starts a new game
     game = true;
@@ -38,7 +36,7 @@ public class TicTacToe {
  
 	  return false;
 }
-  public void hCheck(){ // checks the board Horizontally(column) for a win
+  public boolean hCheck(){ // checks the board Horizontally(column) for a win
     
 	  for(int r = 0; r < board.length; r++)
 	  {
@@ -57,33 +55,12 @@ public class TicTacToe {
  
 	  return false;
   }
-  public boolean dCheck()
-  {
-	  if(board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X"))
-	  {
-		  aiWin = true;
-		  return true;
-	  }
-	  else if(board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O"))
-	  {
-		  playerWin = true;
-		  return true;
-	  }
-	  else if(board[0][2].equals("X") && board[1][1].equals("X") && board[2][0].equals("X"))
-	  {
-		  aiWin = true;
-		  return true;
-	  }
-	  else if(board[0][2].equals("O") && board[1][1].equals("O") && board[2][0].equals("O"))
-	  {
-		  playerWin = true;
-		  return true;
-	  }
-	  return false;
+  public boolean sidewayCheck() {     
+  
   }
   //AI ------------------------------------------------------------------------
 
-   public boolean AIvCheck() {  // checks the board Vertically(row) for a win
+   public boolean AIvCheck() {  // checks the board Vertically(row)
 	  for(int c = 0; c < board[0].length; c++) {
 		  if(board[0][c].equals("X") && board[1][c].equals("X") && board[2][c].equals("X")) {
 			  aiWin = true;
@@ -97,7 +74,7 @@ public class TicTacToe {
  
 	  return false;
 }
-  public void AIhCheck(){ // checks the board Horizontally(column) for a win
+  public boolean AIhCheck(){ // checks the board Horizontally(column)
     
 	  for(int r = 0; r < board.length; r++)
 	  {
@@ -106,8 +83,7 @@ public class TicTacToe {
 			  aiWin = true;
 			  return true;
 		  }
-		  else if(board[r][0].equals("O") && board[r][1].equals("O") && board[r][2].equals("O"))
-		  {
+		  else if(board[r][0].equals("O") && board[r][1].equals("O") && board[r][2].equals("O")) {
 			  playerWin = true; 
 			  return true;
 		  }
@@ -125,11 +101,10 @@ public void AiMove(){ //AI will pick from 3 random points and choose where to go
     if
     }} 
    if() {
-  } else if() 
+  } else if() { 
     } else if(){
-      for(int x = 0; x < board.length; x++){ //rows
-        for(int y = 0; y < board[0].length; y ++){ //collums
-    }}}// end of the 3 random point if statement
+	
+      }// end of the 3 random point if statement
   }
   //Player methods ------------------------------------------------------------
   public void setBoard(int r, int c){ //Sets the size of the board
