@@ -69,7 +69,7 @@ public class TicTacToe {
   }
   //AI ------------------------------------------------------------------------
 
-    public void AIvCheck() {  // Makes a winning move if possible or blocks player if necessary
+   public void AIvCheck() {  // Makes a winning move if possible or blocks player if necessary
 	  for(int c = 0; c < board[0].length; c++) {
 		  if((board[0][c].equals("X") || board[2][c].equals("X")) && board[1][c].equals("X")) {
 			  aiMove = true;
@@ -77,7 +77,7 @@ public class TicTacToe {
 			  {
 				  board[2][c] = "X";
 			  }
-			  else
+			  else if(board[2][c].equals("X"))
 			  {
 				  board[0][c] = "X";
 			  }
@@ -88,7 +88,7 @@ public class TicTacToe {
 			  {
 				  board[2][c] = "X";
 			  }
-			  else
+			  else if(board[2][c].equals("O"))
 			  {
 				  board[0][c] = "X";
 			  }
@@ -105,7 +105,7 @@ public class TicTacToe {
 			  {
 				  board[r][2] = "X";
 			  }
-			  else
+			  else if(board[r][2].equals("X")) 
 			  {
 				  board[r][0] = "X";
 			  }
@@ -116,7 +116,7 @@ public class TicTacToe {
 			  {
 				  board[r][2] = "X";
 			  }
-			  else
+			  else if(board[r][2].equals("O"))
 			  {
 				  board[r][0] = "X";
 			  }
@@ -130,7 +130,7 @@ public class TicTacToe {
 			{
 				board[2][2] = "X";
 			}
-			else
+			else if(board[2][2].equals("X"))
 			{
 				board[0][0] = "X";
 			}
@@ -141,7 +141,7 @@ public class TicTacToe {
 			{
 				board[2][0] = "X";
 			}
-			else
+			else if(board[2][0].equals("X"))
 			{
 				board[0][2] = "X";
 			}	
@@ -152,7 +152,7 @@ public class TicTacToe {
 			{
 				board[2][2] = "X";
 			}
-			else
+			else if(board[2][2].equals("O"))
 			{
 				board[0][0] = "X";
 			}
@@ -163,7 +163,7 @@ public class TicTacToe {
 			{
 				board[2][0] = "X";
 			}
-			else
+			else if(board[2][0].equals("O"))
 			{
 				board[0][2] = "X";
 			}	
