@@ -18,9 +18,25 @@ public class TicTacToe {
           }
     }}
   }
-  public void vCheck(){ // checks the board vertically for a win
-
-  }
+   public boolean verticalWin()
+  {
+	  for(int c = 0; c < board[0].length; c++)
+	  {
+		  if(board[0][c].equals("X") && board[1][c].equals("X") && board[2][c].equals("X"))
+		  {
+			  aiWin = true;
+			  return true;
+		  }
+		  else if(board[0][c].equals("O") && board[1][c].equals("O") && board[2][c].equals("O"))
+		  {
+			  playerWin = true; 
+			  return true;
+		  }
+			  
+	  }
+ 
+	  return false;
+}
   public void hCheck(){ // checks the board Horizontally for a win
     
   }
