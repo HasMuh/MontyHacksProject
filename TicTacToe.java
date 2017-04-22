@@ -5,6 +5,8 @@ public class TicTacToe {
   private int rows, cols;
   private String[][] board = new String[rows][cols];
   private boolean game = false;
+  private boolean aiWin;
+  private boolean playerWin;
  
   public TicTacToe(){ // when called it starts a new game
     game = true;
