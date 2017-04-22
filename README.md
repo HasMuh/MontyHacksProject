@@ -1,2 +1,2 @@
 # MontyHacksProject
-Tic-Tac-Toe
+A AI-driven Tic-Tac-Toe game
